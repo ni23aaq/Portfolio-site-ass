@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Project Details - Nurmuhammad Ibrohimjonov</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      padding: 20px;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #2d2d44;
+    }
+
+    h2 {
+      color: #2d2d44;
+      margin-bottom: 15px;
+    }
+
+    p {
+      margin-bottom: 15px;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 30px;
+      text-decoration: none;
+      background-color: #2d2d44;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+
+    .back-link:hover {
+      background-color: #1b1d30;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Project Details</h1>
+
+    <div id="project-details"></div>
+
+    <a href="portfolio.html" class="back-link">← Back to Portfolio</a>
+  </div>
+
+  <script>
+    // Project data with detailed assignment content
+    const projects = {
+      'smart-temp-monitor': {
+        title: 'Smart Temperature Monitor',
+        description: `
+          This project uses the ESP32 microcontroller and the DHT22 temperature and humidity sensor to measure temperature and humidity in real-time.
+          The RGB LED changes its color depending on the temperature level: blue for cold, green for moderate temperature, and red for hot.
+          Additionally, the user can manually control the LED color using a slide switch and interrupts.
+          The project was built and tested in the Wokwi simulator.
+        `,
+        technologies: 'ESP32, DHT22 sensor, RGB LED, Interrupts, Wokwi Simulator',
+        skills: 'Microcontroller programming, working with sensors, using interrupts, real-time data processing'
+      },
+
+      'github-profile-site': {
+        title: 'GitHub Profile Website',
+        description: `
+          This project is a personal portfolio website built using only HTML, CSS, and JavaScript.
+          The site contains several sections: About, Technical Interests, Portfolio, and more.
+          Accessibility was tested using the WAVE tool and usability was analyzed based on Nielsen’s usability principles.
+          The site focuses on responsiveness, user-friendliness, and data accuracy.
+        `,
+        technologies: 'HTML, CSS, JavaScript, GitHub, WAVE Accessibility Tool',
+        skills: 'Frontend web development, accessibility testing, usability analysis, version control (GitHub)'
+      }
+    };
+
+    // Get project ID from URL query string
+    const urlParams = new URLSearchParams(window.location.search);
+    const projectId = urlParams.get('id');
+
+    const container = document.getElementById('project-details');
+
+    if (projects[projectId]) {
+      const project = projects[projectId];
+      container.innerHTML = `
+        <h2>${project.title}</h2>
+        <p><strong>Project Description:</strong><br>${project.description.trim()}</p>
+        <p><strong>Technologies Used:</strong> ${project.technologies}</p>
+        <p><strong>Skills Demonstrated:</strong> ${project.skills}</p>
+      `;
+    } else {
+      container.innerHTML = `<p>Project not found. Please return to the portfolio page.</p>`;
+    }
+  </script>
+</body>
+</html>
